@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "websocket-parser"
+version = "0.1.0"
+description = "24/7 Polymarket + Binance order book collector with 12ms snapshots to Parquet"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "aiohttp>=3.10.0",
+  "websockets>=12.0",
+  "pyarrow>=16.0.0",
+  "PyYAML>=6.0.0",
+]
+
+[project.scripts]
+ws-collector = "collector.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["collector*"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

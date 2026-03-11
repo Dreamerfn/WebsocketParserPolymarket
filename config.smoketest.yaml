@@ -1,0 +1,39 @@
+collector:
+  sample_interval_ms: 12
+  schema_version: 1
+  flush_rows: 10000
+  flush_interval_sec: 5.0
+  writer_queue_max_batches: 3000
+
+polymarket:
+  ws_url: "wss://ws-subscriptions-clob.polymarket.com/ws/market"
+  gamma_base_url: "https://gamma-api.polymarket.com"
+  discovery_interval_sec: 10
+  slug_scan_enabled: true
+  slug_scan_prefix: "btc-updown-15m"
+  slug_scan_hours_back: 2
+  slug_scan_hours_forward: 8
+  slug_scan_step_sec: 900
+  slug_scan_concurrency: 24
+  market_selection_mode: "current_live"
+  ws_max_queue: 2048
+  ws_max_size_bytes: 2000000
+  slug_keywords:
+    - "btc-updown-15m"
+
+binance:
+  symbol: "BTCUSDT"
+  ws_url: "wss://fstream.binance.com/ws"
+  rest_base_url: "https://fapi.binance.com"
+  diff_stream_speed: "100ms"
+  snapshot_limit: 1000
+  levels: 20
+  ws_max_queue: 2048
+  ws_max_size_bytes: 2000000
+
+storage:
+  base_path: "data/parquet/orderbook_snapshots_smoketest"
+  dataset_partition_cols:
+    - "dt"
+    - "hour"
+    - "source"

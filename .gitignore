@@ -1,0 +1,17 @@
+# Virtual envs
+.venv/
+.venv*/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Data outputs
+data/
+*.parquet
+*.csv
+
+# Logs and temp
+*.log
+.DS_Store
